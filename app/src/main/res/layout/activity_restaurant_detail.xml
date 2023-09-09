@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RestaurantDetailActivity">
+
+    <ImageView
+        android:id="@+id/RDresImage"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/RDScrollView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RDresNameTV"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/WishListBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/addwishlist_icon" />
+
+    <Button
+        android:id="@+id/NagivateBtn"
+        android:layout_width="353dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="10dp"
+        android:text="Navigate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/RDresNameTV"
+        android:layout_width="306dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Name"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/RDresImage"
+        app:layout_constraintEnd_toStartOf="@+id/WishListBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/RDScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RDresImage">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/RDAddressTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="Address"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/RDphoneNumTV"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/RDphoneNumTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="Phone Number"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/RDratingTV"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/RDAddressTV" />
+
+            <TextView
+                android:id="@+id/RDratingTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="Rating"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/RDwebsiteTV"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/RDphoneNumTV" />
+
+            <TextView
+                android:id="@+id/RDwebsiteTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="Website Link"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/RDweekdayTextTV"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/RDratingTV" />
+
+            <TextView
+                android:id="@+id/RDweekdayTextTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="10dp"
+                android:text="Weekday Text"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/ReviewTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/RDwebsiteTV" />
+
+
+            <ImageView
+                android:id="@+id/mapIcon"
+                android:layout_width="101dp"
+                android:layout_height="26dp"
+                app:layout_constraintBottom_toBottomOf="@+id/RDAddressTV"
+                app:layout_constraintEnd_toStartOf="@+id/RDAddressTV"
+                app:layout_constraintTop_toTopOf="@+id/RDAddressTV"
+                app:srcCompat="@drawable/map_icon" />
+
+            <ImageView
+                android:id="@+id/phoneIcon"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="3dp"
+                app:layout_constraintBottom_toBottomOf="@+id/RDphoneNumTV"
+                app:layout_constraintEnd_toStartOf="@+id/RDphoneNumTV"
+                app:layout_constraintTop_toTopOf="@+id/RDphoneNumTV"
+                app:srcCompat="@drawable/phone_icon" />
+
+            <ImageView
+                android:id="@+id/ratingIcon"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="3dp"
+                app:layout_constraintBottom_toBottomOf="@+id/RDratingTV"
+                app:layout_constraintEnd_toStartOf="@+id/RDratingTV"
+                app:layout_constraintTop_toTopOf="@+id/RDratingTV"
+                app:srcCompat="@drawable/rating_icon" />
+
+            <ImageView
+                android:id="@+id/linkIcon"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                app:layout_constraintBottom_toBottomOf="@+id/RDwebsiteTV"
+                app:layout_constraintEnd_toStartOf="@+id/RDwebsiteTV"
+                app:layout_constraintTop_toTopOf="@+id/RDwebsiteTV"
+                app:srcCompat="@drawable/link_icon"
+                tools:layout_editor_absoluteY="55dp" />
+
+            <ImageView
+                android:id="@+id/openinghourIcon"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="3dp"
+                app:layout_constraintBottom_toBottomOf="@+id/RDweekdayTextTV"
+                app:layout_constraintEnd_toStartOf="@+id/RDweekdayTextTV"
+                app:layout_constraintTop_toTopOf="@+id/RDweekdayTextTV"
+                app:srcCompat="@drawable/openinghour_icon" />
+
+            <TextView
+                android:id="@+id/PhotoTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Photos"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/RDweekdayTextTV" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/RDPhotoRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/PhotoTitle" />
+
+            <TextView
+                android:id="@+id/ReviewTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Reviews"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/RDRecyclerView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/RDPhotoRecyclerView" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/RDRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ReviewTitle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "418693275098",
+    "project_id": "userlogin-31cb7",
+    "storage_bucket": "userlogin-31cb7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418693275098:android:ac4daa68cfac7f6eee74e3",
+        "android_client_info": {
+          "package_name": "com.example.groupassignment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418693275098-ib85gbtg3nk23vmge58vpmkd1utvfmim.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3gANvgtBftvMA_krcAYnyi2V958BPfi8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418693275098-ib85gbtg3nk23vmge58vpmkd1utvfmim.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418693275098:android:486da70854125de9ee74e3",
+        "android_client_info": {
+          "package_name": "my.edu.utar.userlogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418693275098-r4q1jcqetrgmuvjourh4maltkk7jubgf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "my.edu.utar.userlogin",
+            "certificate_hash": "7dea4b72746f3ab8b4e13717d3cae1a5235e2961"
+          }
+        },
+        {
+          "client_id": "418693275098-ib85gbtg3nk23vmge58vpmkd1utvfmim.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3gANvgtBftvMA_krcAYnyi2V958BPfi8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418693275098-ib85gbtg3nk23vmge58vpmkd1utvfmim.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

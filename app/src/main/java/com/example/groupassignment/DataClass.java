@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//Done by Chok Xin Yi
 public class DataClass {
     private String dataDesc;
     private String dataImage;

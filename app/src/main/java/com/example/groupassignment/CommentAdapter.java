@@ -12,6 +12,7 @@ import org.w3c.dom.Comment;
 
 import java.util.List;
 
+//Done by Chok Xin Yi
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
     private final List<CommentClass> commentList;
 

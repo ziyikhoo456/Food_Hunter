@@ -1,5 +1,6 @@
 package com.example.groupassignment;
 
+//Done by Khoo Zi Yi
 public class Restaurant {
     private String name, placeID, photoReference;
     private boolean opening_now, addedWishlist=false;

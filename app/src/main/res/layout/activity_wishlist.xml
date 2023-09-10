@@ -10,48 +10,59 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/wishlistRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="645dp"
+        android:layout_height="700dp"
         android:layout_marginTop="20dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/homeBtn"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:background="@drawable/home_icon" />
+            android:foreground="@drawable/home_icon_foreground"
+            android:gravity="bottom" />
 
         <Button
-            android:id="@+id/promotionBtn"
+            android:id="@+id/robotBtn"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:background="@drawable/promotion_icon" />
+            android:foreground="@drawable/robot_foreground"
+            android:gravity="bottom" />
 
         <Button
             android:id="@+id/communityBtn"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:background="@drawable/community_icon" />
+            android:foreground="@drawable/community_icon_foreground"
+            android:gravity="bottom" />
 
         <Button
             android:id="@+id/wishlistBtn"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:background="@drawable/wishlist_icon" />
+            android:foreground="@drawable/wishlist_icon_foreground"
+            android:gravity="bottom" />
 
         <Button
             android:id="@+id/profileBtn"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="70dp"
             android:layout_weight="1"
-            android:background="@drawable/profile_icon" />
+            android:foreground="@drawable/profile_icon_foreground"
+            android:gravity="bottom" />
     </LinearLayout>
 
 </LinearLayout>

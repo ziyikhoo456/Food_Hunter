@@ -2,13 +2,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GroupAssignment"
         tools:targetApi="31">
@@ -16,60 +26,68 @@
         <activity
             android:name=".Ad_login"
             android:exported="false" />
-
         <activity
             android:name=".Ad_reg"
             android:exported="false" />
-
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
-
         <activity
-            android:name=".MainActivity"
+            android:name=".ChatbotActivity"
             android:exported="false" />
-
         <activity
             android:name=".Message"
             android:exported="false" />
-
         <activity
             android:name=".MessageAdapter"
             android:exported="false" />
-
         <activity
             android:name=".RestaurantListActivity"
             android:exported="false" />
-
         <activity
             android:name=".WishlistActivity"
             android:exported="false" />
         <activity
             android:name=".RestaurantDetailActivity"
             android:exported="false" />
-
         <activity
-            android:name=".PromotionActivity"
+            android:name=".CommunityActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:parentActivityName=".RestaurantListActivity"/>
         <activity
             android:name=".PublishPostActivity"
             android:exported="false"
-            android:parentActivityName=".PromotionActivity" />
-
+            android:parentActivityName=".CommunityActivity" />
         <activity
             android:name=".LoginActivity"
+            android:exported="false"
+            android:parentActivityName=".CommunityActivity" />
+
+        <activity
+            android:name=".Search"
+            android:exported="false" />
+        <activity
+            android:name=".ChattingPage"
+            android:exported="false" />
+        <activity
+            android:name=".Chat"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfile"
+            android:exported="false" />
+        <activity
+            android:name=".Profile"
+            android:exported="false" />
+
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
     </application>
 
 </manifest>

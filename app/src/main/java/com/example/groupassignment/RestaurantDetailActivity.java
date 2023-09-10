@@ -1,6 +1,9 @@
 package com.example.groupassignment;
 
+import static android.Manifest.permission.SEND_SMS;
+
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,6 +35,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+//Done by Khoo Zi Yi
 public class RestaurantDetailActivity extends AppCompatActivity {
     private RecyclerView reviewRecyclerView, photoRecyclerView;
     private ReviewAdapter reviewAdapter;
@@ -40,6 +47,7 @@ public class RestaurantDetailActivity extends AppCompatActivity {
     private SQLiteAdapter resSQLiteAdapter;
     private List<Review> reviewList = new ArrayList<>();
     private List<String> photoReferenceList = new ArrayList<>();
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +93,8 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         //check if this restaurant is added into WishList
         for(int i = 0; i < resSQLiteAdapter.getCount(); i++){
             if(placeID.compareTo(resSQLiteAdapter.getString("PlaceID",i)) == 0){
-                wishlistBtn.setImageResource(R.drawable.filled_wishlist_icon);
+                //wishlistBtn.setImageResource(R.drawable.filled_wishlist_icon);
+                wishlistBtn.setForeground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.filled_wishlist_icon));
                 isAddedWishlist = true;
                 break;
             }
@@ -251,36 +260,20 @@ public class RestaurantDetailActivity extends AppCompatActivity {
             }
         });
 
+
+
         RDphoneNumTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    // Format the phone number properly for WhatsApp
-                    String formattedPhoneNumber = phoneNum.replace(" ", "").replace("-", "");
-                    if (!formattedPhoneNumber.startsWith("+")) {
-                        // Add the country code if it's missing
-                        formattedPhoneNumber = "+60" + formattedPhoneNumber;
-                    }
 
-                    // Create a Uri for opening WhatsApp with the formatted phone number
-                    Uri uri = Uri.parse("https://api.whatsapp.com/send?phone=" + formattedPhoneNumber);
-
-                    // Create an Intent to open WhatsApp with the specified phone number
-                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-
-                    // Check if WhatsApp is installed on the device
-                    if (intent.resolveActivity(getPackageManager()) != null) {
-                        startActivity(intent); // Open WhatsApp
-                    } else {
-                        // If WhatsApp is not installed, you can handle this case here
-                        // For example, you can show a message or prompt the user to install it
-                        Toast.makeText(RestaurantDetailActivity.this, "WhatsApp is not installed.", Toast.LENGTH_SHORT).show();
-                    }
-                } catch (Exception e) {
-                    // Handle any exceptions that may occur
-                    Log.e("WhatsApp Error", "Failed to open WhatsApp: " + e.getMessage());
-                    Toast.makeText(RestaurantDetailActivity.this, "Failed to open WhatsApp.", Toast.LENGTH_SHORT).show();
+                if (ContextCompat.checkSelfPermission(RestaurantDetailActivity.this, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+                    // Permission is not granted, request it
+                    ActivityCompat.requestPermissions(RestaurantDetailActivity.this, new String[]{android.Manifest.permission.SEND_SMS}, MY_PERMISSIONS_REQUEST_SEND_SMS);
+                } else {
+                    // Permission is already granted, proceed with opening WhatsApp
+                    openWhatsApp();
                 }
+
             }
         });
 
@@ -290,9 +283,9 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                 // Get the URL of the website
                 String websiteUrl = website;
 
-                // Check if the website URL is not empty or equal to "-"
-                if (websiteUrl != null && !websiteUrl.equals("-")) {
-                    try {
+                try {
+                    // Check if the website URL is not empty or equal to "-"
+                    if (websiteUrl != null && !websiteUrl.equals("-")) {
                         // Create an Intent to open the web browser with the website URL
                         Uri webPage = Uri.parse(websiteUrl);
                         Intent intent = new Intent(Intent.ACTION_VIEW, webPage);
@@ -301,19 +294,18 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                         if (intent.resolveActivity(getPackageManager()) != null) {
                             startActivity(intent); // Open the web browser
                         } else {
-                            // If no web browser is available, you can handle this case here
-                            // For example, you can show a message to the user
+                            // If no web browser is available, show a message to the user
                             Toast.makeText(RestaurantDetailActivity.this, "No web browser found.", Toast.LENGTH_SHORT).show();
                         }
-                    } catch (Exception e) {
-                        // Handle any exceptions that may occur
-                        Log.e("Website Error", "Failed to open website: " + e.getMessage());
-                        Toast.makeText(RestaurantDetailActivity.this, "Failed to open website.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // Handle the case where the website URL is empty or "-"
+                        // Show a message to the user indicating that there is no website available
+                        Toast.makeText(RestaurantDetailActivity.this, "No website available for this restaurant.", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    // Handle the case where the website URL is empty or "-"
-                    // You can show a message to the user indicating that there is no website available
-                    Toast.makeText(RestaurantDetailActivity.this, "No website available for this restaurant.", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    // Handle any exceptions that may occur
+                    Log.e("Website Error", "Failed to open website: " + e.getMessage());
+                    Toast.makeText(RestaurantDetailActivity.this, "Failed to open website.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -324,12 +316,14 @@ public class RestaurantDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(isAddedWishlist){
                     isAddedWishlist = false;
-                    wishlistBtn.setImageResource(R.drawable.addwishlist_icon);
+                    wishlistBtn.setForeground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.addwishlist_icon));
+                    //wishlistBtn.setImageResource(R.drawable.addwishlist_icon);
                     resSQLiteAdapter.openToWrite();
                     resSQLiteAdapter.deleteRow(placeID);
                 } else{
                     isAddedWishlist = true;
-                    wishlistBtn.setImageResource(R.drawable.filled_wishlist_icon);
+                    wishlistBtn.setForeground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.filled_wishlist_icon));
+                    //wishlistBtn.setImageResource(R.drawable.filled_wishlist_icon);
                     resSQLiteAdapter.openToWrite();
                     resSQLiteAdapter.insert(placeID,wishlistName,photoReference,wishlistOpeningNow,wishlistRating,wishlistDistance,wishlistPriceLevel,wishlistUserRatingTotal);
                 }
@@ -338,6 +332,52 @@ public class RestaurantDetailActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == MY_PERMISSIONS_REQUEST_SEND_SMS) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission is granted, proceed with opening WhatsApp
+                openWhatsApp();
+            } else {
+                // Permission denied, handle it (e.g., show a message to the user)
+                Toast.makeText(this, "Permission denied. You cannot open WhatsApp.", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void openWhatsApp() {
+        try {
+            // Format the phone number properly for WhatsApp
+            String formattedPhoneNumber = phoneNum.replace(" ", "").replace("-", "");
+            if (!formattedPhoneNumber.startsWith("+")) {
+                // Add the country code if it's missing
+                formattedPhoneNumber = "+60" + formattedPhoneNumber;
+            }
+
+            // Create a Uri for opening WhatsApp with the formatted phone number
+            Uri uri = Uri.parse("https://api.whatsapp.com/send?phone=" + formattedPhoneNumber);
+
+            // Create an Intent to open WhatsApp with the specified phone number
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+
+            // Check if WhatsApp is installed on the device
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent); // Open WhatsApp
+            } else {
+                // If WhatsApp is not installed, you can handle this case here
+                // For example, you can show a message or prompt the user to install it
+                Toast.makeText(RestaurantDetailActivity.this, "WhatsApp is not installed.", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            // Handle any exceptions that may occur
+            Log.e("WhatsApp Error", "Failed to open WhatsApp: " + e.getMessage());
+            Toast.makeText(RestaurantDetailActivity.this, "Failed to open WhatsApp.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     private String readStream(InputStream is) {
         try {

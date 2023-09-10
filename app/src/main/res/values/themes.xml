@@ -3,7 +3,18 @@
     <style name="Base.Theme.GroupAssignment" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/purple</item>
+        <item name="colorPrimaryDark">@color/purple_700</item>
+        <item name="colorAccent">@color/teal_200</item>
     </style>
 
+    <style name="ScreenBackground1"><item name="android:background">@drawable/profilebkg</item></style>
+    <style name="ScreenBackground2"><item name="android:background">@drawable/white_background</item></style>
+    <style name="TextColor1"><item name="android:textColor">@color/lavender</item></style>
+    <style name="TextColor2"><item name="android:textColor">@color/black</item></style>
+    <style name="Button"><item name="android:background">@color/lavender</item></style>
+    <style name="BackButton"><item name="android:background">@drawable/arrow_back</item></style>
+    <style name="DehazeButton"><item name="android:background">@drawable/dehaze</item></style>
+    <style name="LogOutButton"><item name="android:background">@drawable/logout_button</item></style>
     <style name="Theme.GroupAssignment" parent="Base.Theme.GroupAssignment" />
 </resources>

@@ -24,6 +24,7 @@ import com.google.firebase.firestore.auth.User;
 
 import java.util.Random;
 
+//Done by Tang Hui Sin
 public class SignUpActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;

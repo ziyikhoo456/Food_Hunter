@@ -1,9 +1,8 @@
 package com.example.groupassignment;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.drawable.Drawable;
+import android.content.DialogInterface;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,6 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//Done by Chok Xin Yi
 public class DataClassAdapter extends RecyclerView.Adapter<DataClassAdapter.ViewHolder> {
 
     private final Context context;
@@ -69,17 +67,14 @@ public class DataClassAdapter extends RecyclerView.Adapter<DataClassAdapter.View
         // Load the post image using Glide (you may need to add Glide dependency to your build.gradle)
         Glide.with(context)
                 .load(post.getDataImage())
-                .override(300, 300)
                 .into(holder.imageViewPost);
 
         // Set the like button icon based on whether the post is liked by the current user
         if(post.getLikedByUsernames().contains(FirebaseAuth.getInstance().getCurrentUser().getDisplayName())){
-            //holder.likeButton.setImageResource(R.drawable.like);
             holder.likeButton.setBackgroundResource(R.drawable.like);
         }
         else{
             holder.likeButton.setBackgroundResource(R.drawable.dislike);
-            //holder.likeButton.setImageResource(R.drawable.dislike);
         }
 
         // Display the like count
@@ -100,6 +95,34 @@ public class DataClassAdapter extends RecyclerView.Adapter<DataClassAdapter.View
                 showCommentDialog(post, postId, holder);
             }
         });
+
+        String currentUsername = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+        if(currentUsername.equals(post.getUsername())){
+            holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Delete Post");
+                    builder.setMessage("Are you sure you want to delete this post?");
+                    builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            deletePost(postId);
+                        }
+                    });
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.show();
+                }
+            });
+        }
+        else{
+            holder.deleteButton.setVisibility(View.GONE);
+        }
 
         if(!commentsMap.containsKey(postId)){
             fetchCommentsForPost(postId, holder);
@@ -162,6 +185,24 @@ public class DataClassAdapter extends RecyclerView.Adapter<DataClassAdapter.View
         notifyDataSetChanged();
     }
 
+    private void deletePost(String postId){
+        DatabaseReference postRef = FirebaseDatabase.getInstance().getReference()
+                .child("post").child(postId);
+
+        // Remove the post from Firebase
+        postRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(context, "Post deleted", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(context, "Failed to delete post", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
     @Override
     public int getItemCount() {
         return postList.size();
@@ -174,6 +215,7 @@ public class DataClassAdapter extends RecyclerView.Adapter<DataClassAdapter.View
         ImageButton likeButton;
         TextView textViewLikeCount;
         ImageButton commentButton;
+        ImageButton deleteButton;
         RecyclerView recyclerViewComments;
 
         public ViewHolder(View itemView) {
@@ -184,6 +226,7 @@ public class DataClassAdapter extends RecyclerView.Adapter<DataClassAdapter.View
             likeButton = itemView.findViewById(R.id.likeButton);
             textViewLikeCount = itemView.findViewById(R.id.textViewLikeCount);
             commentButton = itemView.findViewById(R.id.commentButton);
+            deleteButton = itemView.findViewById(R.id.deleteButton);
             recyclerViewComments = itemView.findViewById(R.id.recyclerViewComments);
         }
     }

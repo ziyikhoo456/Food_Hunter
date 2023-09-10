@@ -52,6 +52,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+//Done by Khoo Zi Yi
 public class RestaurantListActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
@@ -224,7 +225,7 @@ public class RestaurantListActivity extends AppCompatActivity {
         robotBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RestaurantListActivity.this,MainActivity.class);
+                Intent intent = new Intent(RestaurantListActivity.this, ChatbotActivity.class);
                 startActivity(intent);
             }
         });
@@ -233,7 +234,16 @@ public class RestaurantListActivity extends AppCompatActivity {
         communityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RestaurantListActivity.this,PromotionActivity.class);
+                Intent intent = new Intent(RestaurantListActivity.this, CommunityActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button profileBtn = (Button) findViewById(R.id.profileBtn);
+        profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RestaurantListActivity.this, Profile.class);
                 startActivity(intent);
             }
         });
@@ -518,7 +528,7 @@ public class RestaurantListActivity extends AppCompatActivity {
         Intent autocompleteIntent =
                 new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, placeFields)
                         .setCountries(countries)
-                        .setHint("Search for only one restaurant...")
+                        .setHint("Search one restaurant")
                         .build(this);
 
         startActivityForResult(autocompleteIntent, 23487);

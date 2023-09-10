@@ -1,4 +1,6 @@
 package com.example.groupassignment;
+
+//Done by Khoo Zi Yi
 public class Review {
     private String name;
     private String profilePicURL;

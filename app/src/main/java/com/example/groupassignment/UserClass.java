@@ -3,6 +3,7 @@ package com.example.groupassignment;
 import java.util.HashMap;
 import java.util.Map;
 
+//Done by Chok Xin Yi
 public class UserClass {
     private String email;
     private String username;

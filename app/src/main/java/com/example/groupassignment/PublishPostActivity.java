@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
@@ -35,6 +36,10 @@ import com.google.firebase.storage.UploadTask;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+//Done by Chok Xin Yi
 public class PublishPostActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private static final int MY_PERMISSION_REQUEST_CODE = 1001;
@@ -74,6 +79,7 @@ public class PublishPostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 publishPost();
+                Toast.makeText(PublishPostActivity.this, "Post published successfully", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -228,8 +234,24 @@ public class PublishPostActivity extends AppCompatActivity {
         addImage.setImageResource(android.R.color.transparent);
         selectedImageUri = null;
 
-        // Show a success message
-        Toast.makeText(PublishPostActivity.this, "Post published successfully", Toast.LENGTH_SHORT).show();
+        final int[] counter = {0};
+        progressBar.setVisibility(View.VISIBLE);
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                counter[0]++;
+                progressBar.setProgress(counter[0]);
+
+                if(counter[0] == 50){
+                    timer.cancel();
+
+                    Intent intent = new Intent(PublishPostActivity.this, CommunityActivity.class);
+                    startActivity(intent);
+                }
+            }
+        };
+        timer.schedule(timerTask, 50, 50);
     }
 
 }

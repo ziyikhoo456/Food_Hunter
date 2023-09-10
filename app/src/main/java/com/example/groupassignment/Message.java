@@ -1,5 +1,6 @@
 package com.example.groupassignment;
 
+//Done by Chok Xin Yi
 public class Message {
 
     public static String SENT_BY_ME="me";

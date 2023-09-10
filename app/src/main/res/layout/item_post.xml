@@ -43,7 +43,7 @@
             android:id="@+id/likeButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/dislike" /> <!-- Set your like icon here -->
+            android:background="@drawable/like" /> <!-- Set your like icon here -->
 
         <TextView
             android:id="@+id/textViewLikeCount"
@@ -57,7 +57,19 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
-            android:background="@drawable/comment_2" /> <!-- Set your comment icon here -->
+            android:background="@drawable/comment" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/ic_baseline_delete_24" />
 
     </LinearLayout>
 

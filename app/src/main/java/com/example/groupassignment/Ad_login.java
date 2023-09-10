@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+//Done by Tang Hui Sin
 public class Ad_login extends AppCompatActivity {
 
     private FirebaseAuth auth;
@@ -47,14 +48,14 @@ public class Ad_login extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(AuthResult authResult) {
                                         Toast.makeText(Ad_login.this,"Login Successful",Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(Ad_login.this,MainActivity.class));
+                                        startActivity(new Intent(Ad_login.this, ChatbotActivity.class));
                                         finish();
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(Exception e) {
                                 Toast.makeText(Ad_login.this,"Login Successful",Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(Ad_login.this,MainActivity.class));
+                                startActivity(new Intent(Ad_login.this, ChatbotActivity.class));
                                 finish();
                             }
                         });

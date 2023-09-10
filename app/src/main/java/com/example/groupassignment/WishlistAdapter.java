@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+//Done by Khoo Zi Yi
 public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.RestaurantViewHolder> {
 
     private List<Restaurant> restaurantList;

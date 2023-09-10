@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+//Done by Khoo Zi Yi
 public class SQLiteAdapter {
 
     //SQL Commands

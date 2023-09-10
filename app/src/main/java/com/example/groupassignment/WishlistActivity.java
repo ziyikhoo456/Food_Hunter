@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+//Done by Khoo Zi Yi
 public class WishlistActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private WishlistAdapter adapter;

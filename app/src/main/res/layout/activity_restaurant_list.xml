@@ -24,7 +24,9 @@
             android:id="@+id/searchTextInputLayout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
             app:hintEnabled="false"
             app:startIconContentDescription="Search icon"
             app:startIconDrawable="@drawable/ic_search_black_24dp">
@@ -34,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:hint="Search restaurants by name"
+                android:hint="Search restaurants"
                 android:imeOptions="actionSearch"
                 android:inputType="text"
                 android:singleLine="true" />
@@ -44,10 +46,11 @@
 
         <Button
             android:id="@+id/searchButton"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center|end"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:text="Search" />
 
     </LinearLayout>
@@ -63,6 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
             android:text="AutoCompleteSupport" />
 
         <CheckBox
@@ -70,6 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_marginEnd="10dp"
             android:text="Display only opening restaurants" />
     </LinearLayout>
 
@@ -81,44 +86,54 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/homeBtn"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:foreground="@drawable/home_icon_foreground" />
+            android:foreground="@drawable/home_icon_foreground"
+            android:gravity="bottom" />
 
         <Button
             android:id="@+id/robotBtn"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:foreground="@drawable/robot_foreground" />
+            android:foreground="@drawable/robot_foreground"
+            android:gravity="bottom" />
 
         <Button
             android:id="@+id/communityBtn"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:foreground="@drawable/community_icon_foreground" />
+            android:foreground="@drawable/community_icon_foreground"
+            android:gravity="bottom" />
 
         <Button
             android:id="@+id/wishlistBtn"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:foreground="@drawable/wishlist_icon_foreground" />
+            android:foreground="@drawable/wishlist_icon_foreground"
+            android:gravity="bottom" />
 
         <Button
             android:id="@+id/profileBtn"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
             android:layout_weight="1"
-            android:foreground="@drawable/profile_icon_foreground" />
+            android:foreground="@drawable/profile_icon_foreground"
+            android:gravity="bottom" />
     </LinearLayout>
 
 

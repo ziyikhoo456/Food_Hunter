@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+//Done by Tang Hui Sin
 public class Ad_reg extends AppCompatActivity {
     private FirebaseAuth auth;
     private EditText signupEmail,signupPassword;

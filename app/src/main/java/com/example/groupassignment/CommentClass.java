@@ -1,5 +1,6 @@
 package com.example.groupassignment;
 
+//Done by Chok Xin Yi
 public class CommentClass {
     private String commentText;
     private String commenterUsername;

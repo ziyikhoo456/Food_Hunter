@@ -155,8 +155,6 @@ public class RestaurantListActivity extends AppCompatActivity {
         adapter = new RestaurantAdapter(allRestaurants);
         recyclerView.setAdapter(adapter);
 
-        setLaunchActivityClickListener(R.id.wishlistBtn, WishlistActivity.class);
-
         searchEditText = findViewById(R.id.searchEditText);
         searchButton = findViewById(R.id.searchButton);;
 
@@ -221,32 +219,10 @@ public class RestaurantListActivity extends AppCompatActivity {
             }
         });
 
-        Button robotBtn = (Button) findViewById(R.id.robotBtn);
-        robotBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RestaurantListActivity.this, ChatbotActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button communityBtn = (Button) findViewById(R.id.communityBtn);
-        communityBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RestaurantListActivity.this, CommunityActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button profileBtn = (Button) findViewById(R.id.profileBtn);
-        profileBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RestaurantListActivity.this, Profile.class);
-                startActivity(intent);
-            }
-        });
+        setLaunchActivityClickListener(R.id.wishlistBtn, WishlistActivity.class);
+        setLaunchActivityClickListener(R.id.robotBtn, ChatbotActivity.class);
+        setLaunchActivityClickListener(R.id.communityBtn, CommunityActivity.class);
+        setLaunchActivityClickListener(R.id.profileBtn, Profile.class);
 
     }
 
@@ -282,7 +258,6 @@ public class RestaurantListActivity extends AppCompatActivity {
                 .setOnClickListener(v -> {
                     Intent intent = new Intent(RestaurantListActivity.this, activityClassToLaunch);
                     startActivity(intent);
-                    finish();
                 });
     }
 

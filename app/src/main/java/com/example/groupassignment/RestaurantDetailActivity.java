@@ -183,6 +183,7 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                             if(reviewArray != null){
                                 reviewList.clear();
 
+
                                 for(int i = 0; i < reviewArray.length();i++){
                                     JSONObject review = reviewArray.getJSONObject(i);
                                     String name = review.optString("author_name","Anonymous");
@@ -192,8 +193,10 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                                     String text = review.optString("text","");
 
                                     Review newReview = new Review(name,profilePicURL,rating,relativeTime,text);
+                                    Log.i("Review 404",name+" "+profilePicURL+" "+rating+" "+relativeTime+" "+text);
                                     reviewList.add(newReview);
                                 }
+
                                 userRateTotal = result.optInt("user_ratings_total",0);
                                 website = result.optString("website","-");
                             }
@@ -237,7 +240,7 @@ public class RestaurantDetailActivity extends AppCompatActivity {
         }.start();
 
         // Inside your onCreate method
-        Button navigateBtn = findViewById(R.id.NagivateBtn);
+        Button navigateBtn = findViewById(R.id.NavigateBtn);
         navigateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -34,44 +34,6 @@ public class WishlistActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         displayRestaurants();
-
-        Button homeBtn = (Button) findViewById(R.id.homeBtn);
-        homeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(WishlistActivity.this, RestaurantListActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        Button robotBtn = (Button) findViewById(R.id.robotBtn);
-        robotBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(WishlistActivity.this, ChatbotActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button communityBtn = (Button) findViewById(R.id.communityBtn);
-        communityBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(WishlistActivity.this, CommunityActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button profileBtn = (Button) findViewById(R.id.profileBtn);
-        profileBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(WishlistActivity.this, Profile.class);
-                startActivity(intent);
-            }
-        });
-
     }
 
     @Override

@@ -54,7 +54,7 @@ import java.util.List;
 
 //Done by Khoo Zi Yi
 public class RestaurantListActivity extends AppCompatActivity {
-
+    private final String apiKey = getString(R.string.API_KEY);
     private RecyclerView recyclerView;
     private RestaurantAdapter adapter;
     private final List<Restaurant> allRestaurants = new ArrayList<>();
@@ -115,7 +115,6 @@ public class RestaurantListActivity extends AppCompatActivity {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
-        final String apiKey = getString(R.string.API_KEY);
 
         if (apiKey.equals("")) {
             Toast.makeText(this, "No API key found.", Toast.LENGTH_LONG).show();
@@ -205,14 +204,14 @@ public class RestaurantListActivity extends AppCompatActivity {
                             "&location=" + userLocation.getLatitude() + "%2C" + userLocation.getLongitude() +
                             "&radius=1500" +
                             "&opennow=true" +
-                            "&key=AIzaSyC1n_2xoJGwMsbKK43o-hYAnGdbEjpZq1w";
+                            "&key="+apiKey;
 
                 } else {
                     url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json" +
                             "?keyword=restaurant" +
                             "&location=" + userLocation.getLatitude() + "%2C" + userLocation.getLongitude() +
                             "&radius=1500" +
-                            "&key=AIzaSyC1n_2xoJGwMsbKK43o-hYAnGdbEjpZq1w";
+                            "&key="+apiKey;
                 }
                 MyThread connectingThread = new MyThread(url);
                 connectingThread.start();
@@ -244,7 +243,7 @@ public class RestaurantListActivity extends AppCompatActivity {
             // Create and start a new thread to fetch more data
             String url ="https://maps.googleapis.com/maps/api/place/nearbysearch/json" +
                     "?pagetoken=" + nextPageToken+
-                    "&key=AIzaSyC1n_2xoJGwMsbKK43o-hYAnGdbEjpZq1w";
+                    "&key="+apiKey;
             MyThread connectingThread = new MyThread(url);
             connectingThread.start();
         } else {
@@ -285,7 +284,7 @@ public class RestaurantListActivity extends AppCompatActivity {
                             "?keyword=restaurant" +
                             "&location=" + userLocation.getLatitude() + "%2C" + userLocation.getLongitude() +
                             "&radius=1500" +
-                            "&key=AIzaSyC1n_2xoJGwMsbKK43o-hYAnGdbEjpZq1w";
+                            "&key="+apiKey;
                     MyThread connectingThread = new MyThread(url);
                     connectingThread.start();
 
@@ -310,7 +309,6 @@ public class RestaurantListActivity extends AppCompatActivity {
 
     private void searchRestaurantsByName(String query) {
         // Construct the URL with the search query
-        String apiKey = getString(R.string.API_KEY);
         String url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
                 + "?query=" + query
                 + "&key=" + apiKey;

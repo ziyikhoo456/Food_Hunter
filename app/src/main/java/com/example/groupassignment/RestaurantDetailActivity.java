@@ -37,6 +37,7 @@ import java.util.List;
 
 //Done by Khoo Zi Yi
 public class RestaurantDetailActivity extends AppCompatActivity {
+    private final String apiKey = getString(R.string.API_KEY);
     private RecyclerView reviewRecyclerView, photoRecyclerView;
     private ReviewAdapter reviewAdapter;
     private PhotoAdapter photoAdapter;
@@ -119,7 +120,7 @@ public class RestaurantDetailActivity extends AppCompatActivity {
                             "user_ratings_total%2C" +
                             "website" +
                             "&place_id=" + placeID +
-                            "&key=AIzaSyC1n_2xoJGwMsbKK43o-hYAnGdbEjpZq1w");
+                            "&key=" + apiKey);
 
                     HttpURLConnection hc = (HttpURLConnection) url.openConnection();
 
@@ -399,7 +400,7 @@ public class RestaurantDetailActivity extends AppCompatActivity {
 
     private String getPhotoUrl(String photoReference) {
         // Construct the URL using your API key and the photo reference
-        String apiKey = "AIzaSyC1n_2xoJGwMsbKK43o-hYAnGdbEjpZq1w";
+
         return "https://maps.googleapis.com/maps/api/place/photo"+
                 "?maxwidth=400"+
                 "&photo_reference=" + photoReference +

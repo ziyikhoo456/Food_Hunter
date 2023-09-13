@@ -6,15 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".CommunityActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/toolbar"
-        android:background="#6750A4"
-        app:title="Community"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/Theme.AppCompat.Light"
-        android:layout_alignParentTop="true"/>
+    <include layout="@layout/community_toolbar"
+        android:id="@+id/toolbar"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"

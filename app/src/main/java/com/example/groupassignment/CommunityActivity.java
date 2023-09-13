@@ -7,13 +7,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,15 +39,32 @@ public class CommunityActivity extends AppCompatActivity {
     DataClassAdapter adapter;
     List<DataClass> postList;
     List<String> postIds;
-    ProgressBar progressBar;
+
+    ImageButton backButton;
+    ImageButton chatButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CommunityActivity.this, RestaurantListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        chatButton = findViewById(R.id.chatButton);
+        chatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CommunityActivity.this, Chat.class);
+                startActivity(intent);
+            }
+        });
 
         // Change the database reference to the user's posts
         // Change the database reference to fetch posts from all users
@@ -66,19 +88,6 @@ public class CommunityActivity extends AppCompatActivity {
 
         // Use userId to filter posts
         retrieveAndDisplayPosts();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.community_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent = new Intent(CommunityActivity.this, Chat.class);
-        startActivity(intent);
-        return super.onOptionsItemSelected(item);
     }
 
     private void retrieveAndDisplayPosts() {

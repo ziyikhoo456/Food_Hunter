@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">FoodHunter</string>
-    <string name="API_KEY">AIzaSyC1n_2xoJGwMsbKK43o-hYAnGdbEjpZq1w</string>
+    <string name="API_KEY">"Enter your API key here"</string>
 </resources>

@@ -1,1 +1,0 @@
-This project is developed using Android Studio Giraffe 2022.3.1. You might face difficulty to run the application if you use the lower version. Please upgrade your android studio to the same or higher version. Thank you for your cooperation!

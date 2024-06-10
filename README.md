@@ -1,6 +1,6 @@
 # Food Hunter
 
-*Credit to: Khoo Zi Yi (Me), Chok Xin Yi, Tang Hui Xin, Kuek Gavin*
+***Credit to: Khoo Zi Yi (Me), Chok Xin Yi, Tang Hui Xin, Kuek Gavin***
 
 The functions of this application includes:
 1. List nearby restaurants

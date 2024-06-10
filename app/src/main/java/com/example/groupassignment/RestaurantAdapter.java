@@ -1,5 +1,7 @@
 package com.example.groupassignment;
 
+import static androidx.core.content.res.TypedArrayUtils.getString;
+
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +19,7 @@ import java.util.List;
 //Done by Khoo Zi Yi
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder> {
 
-    private final String apiKey = "Enter your API key here";
+    private String apiKey = "AIzaSyC1n_2xoJGwMsbKK43o-hYAnGdbEjpZq1w";
     private List<Restaurant> restaurantList;
 
     public RestaurantAdapter(List<Restaurant> restaurantList) {

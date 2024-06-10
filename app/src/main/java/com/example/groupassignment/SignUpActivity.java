@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,8 +18,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.auth.User;
 
 import java.util.Random;
 
@@ -43,32 +40,29 @@ public class SignUpActivity extends AppCompatActivity {
         signupButton = findViewById(R.id.signup_button);
         loginRedirectText = findViewById(R.id.loginRedirectText);
 
-        signupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String user = signupEmail.getText().toString().trim();
-                String pass = signupPassword.getText().toString().trim();
+        signupButton.setOnClickListener(view -> {
+            String user = signupEmail.getText().toString().trim();
+            String pass = signupPassword.getText().toString().trim();
 
-                if (user.isEmpty()) {
-                    signupEmail.setError("Email cannot be empty");
-                }
-                if (pass.isEmpty()) {
-                    signupPassword.setError("Password cannot be empty");
-                } else {
-                    auth.createUserWithEmailAndPassword(user, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // create user profile in Firebase Firestore
-                                String username = generateRandomUsername();
-                                setDisplayNameandRedirect(user, username);
-                            } else {
-                                Toast.makeText(SignUpActivity.this, "SignUp Fail" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+            if (user.isEmpty()) {
+                signupEmail.setError("Email cannot be empty");
+            }
+            if (pass.isEmpty()) {
+                signupPassword.setError("Password cannot be empty");
+            } else {
+                auth.createUserWithEmailAndPassword(user, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // create user profile in Firebase Firestore
+                            String username = generateRandomUsername();
+                            setDisplayNameandRedirect(user, username);
+                        } else {
+                            Toast.makeText(SignUpActivity.this, "SignUp Fail" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
-                            }
                         }
-                    });
-                }
+                    }
+                });
             }
         });
         loginRedirectText.setOnClickListener(new View.OnClickListener() {

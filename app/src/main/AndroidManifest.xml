@@ -36,12 +36,6 @@
             android:name=".ChatbotActivity"
             android:exported="false" />
         <activity
-            android:name=".Message"
-            android:exported="false" />
-        <activity
-            android:name=".MessageAdapter"
-            android:exported="false" />
-        <activity
             android:name=".RestaurantListActivity"
             android:exported="false" />
         <activity

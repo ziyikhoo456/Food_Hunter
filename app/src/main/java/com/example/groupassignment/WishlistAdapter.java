@@ -16,7 +16,7 @@ import java.util.List;
 
 //Done by Khoo Zi Yi
 public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.RestaurantViewHolder> {
-    private final String apiKey = "Enter your API key here";
+    private final String apiKey = "AIzaSyC1n_2xoJGwMsbKK43o-hYAnGdbEjpZq1w";
 
     private List<Restaurant> restaurantList;
 

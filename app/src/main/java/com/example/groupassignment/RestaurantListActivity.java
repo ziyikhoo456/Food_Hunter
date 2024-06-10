@@ -54,7 +54,7 @@ import java.util.List;
 
 //Done by Khoo Zi Yi
 public class RestaurantListActivity extends AppCompatActivity {
-    private final String apiKey = getString(R.string.API_KEY);
+    private String apiKey;
     private RecyclerView recyclerView;
     private RestaurantAdapter adapter;
     private final List<Restaurant> allRestaurants = new ArrayList<>();
@@ -115,6 +115,7 @@ public class RestaurantListActivity extends AppCompatActivity {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
+        apiKey = getString(R.string.API_KEY);
 
         if (apiKey.equals("")) {
             Toast.makeText(this, "No API key found.", Toast.LENGTH_LONG).show();

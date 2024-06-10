@@ -87,9 +87,18 @@ public class ChatbotActivity extends AppCompatActivity {
         messageList.add(new Message("Typing... ",Message.SENT_BY_BOT));
 
         JSONObject jsonBody = new JSONObject();
+
+
         try {
-            jsonBody.put("model","text-davinci-003");
-            jsonBody.put("prompt",question);
+            jsonBody.put("model","gpt-3.5-turbo");
+
+            JSONArray messagesArray = new JSONArray();
+            JSONObject systemMessage = new JSONObject();
+            systemMessage.put("role", "system");
+            systemMessage.put("content", question);
+            messagesArray.put(systemMessage);
+
+            jsonBody.put("messages",messagesArray);
             jsonBody.put("max_tokens",4000);
             jsonBody.put("temperature",0);
         } catch (JSONException e) {
@@ -97,8 +106,8 @@ public class ChatbotActivity extends AppCompatActivity {
         }
         RequestBody body = RequestBody.create(jsonBody.toString(),JSON);
         Request request = new Request.Builder()
-                .url("https://api.openai.com/v1/completions")
-                .header("Authorization","Bearer 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")
+                .url("https://api.openai.com/v1/chat/completions")
+                .header("Authorization","Bearer sk-proj-mCnponx23uS80GVnhlwTT3BlbkFJ1VCH8dgelUnEEC2ShUxx")
                 .post(body)
                 .build();
 
@@ -111,11 +120,11 @@ public class ChatbotActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 if(response.isSuccessful()){
-                    JSONObject  jsonObject = null;
                     try {
-                        jsonObject = new JSONObject(response.body().string());
+                        assert response.body() != null;
+                        JSONObject jsonObject = new JSONObject(response.body().string());
                         JSONArray jsonArray = jsonObject.getJSONArray("choices");
-                        String result = jsonArray.getJSONObject(0).getString("text");
+                        String result = jsonArray.getJSONObject(0).getJSONObject("message").getString("content");
                         addResponse(result.trim());
                     } catch (JSONException e) {
                         e.printStackTrace();

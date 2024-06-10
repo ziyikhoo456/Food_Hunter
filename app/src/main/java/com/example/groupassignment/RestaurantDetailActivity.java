@@ -37,7 +37,7 @@ import java.util.List;
 
 //Done by Khoo Zi Yi
 public class RestaurantDetailActivity extends AppCompatActivity {
-    private final String apiKey = getString(R.string.API_KEY);
+    private String apiKey;
     private RecyclerView reviewRecyclerView, photoRecyclerView;
     private ReviewAdapter reviewAdapter;
     private PhotoAdapter photoAdapter;
@@ -54,6 +54,8 @@ public class RestaurantDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_detail);
+
+        apiKey = getString(R.string.API_KEY);
 
         FloatingActionButton wishlistBtn = (FloatingActionButton) findViewById(R.id.WishListBtn);
         ImageView photoImgView = (ImageView) findViewById(R.id.RDresImage);

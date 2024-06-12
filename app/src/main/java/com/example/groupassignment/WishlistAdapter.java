@@ -16,8 +16,6 @@ import java.util.List;
 
 //Done by Khoo Zi Yi
 public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.RestaurantViewHolder> {
-    private final String apiKey = "AIzaSyC1n_2xoJGwMsbKK43o-hYAnGdbEjpZq1w";
-
     private List<Restaurant> restaurantList;
 
     public WishlistAdapter(List<Restaurant> restaurantList) {
@@ -62,6 +60,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.Restau
 
     private String getPhotoUrl(String photoReference) {
         // Construct the URL using your API key and the photo reference
+        String apiKey = "PLACES_API_KEY";
         return "https://maps.googleapis.com/maps/api/place/photo"+
                 "?maxwidth=500"+
                 "&photo_reference=" + photoReference +

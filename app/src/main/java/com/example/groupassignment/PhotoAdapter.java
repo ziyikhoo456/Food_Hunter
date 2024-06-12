@@ -42,7 +42,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
 
     private String getPhotoUrl(String photoReference) {
         // Construct the URL using your API key and the photo reference
-        String apiKey = "AIzaSyC1n_2xoJGwMsbKK43o-hYAnGdbEjpZq1w";
+        String apiKey = "PLACES_API_KEY";
         return "https://maps.googleapis.com/maps/api/place/photo"+
                 "?maxwidth=500"+
                 "&photo_reference=" + photoReference +
